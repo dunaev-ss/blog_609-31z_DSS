@@ -19,6 +19,20 @@
                 <li><a href="{% url 'homepage' %}">Home</a></li>
                 <li><a href="{% url 'article_list' %}">Articles</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <form class="form" action="/accounts/logout/" method="post">
+                            {% csrf_token %}
+                            <button class="nav-button" type="submit">Logout</button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
             </ul>
         </nav>
     </header>

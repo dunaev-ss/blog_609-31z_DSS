@@ -14,5 +14,5 @@ def about(request):
     staff = ['John Nichols', 'John Rogers', 'Timothy Smith']
     director = {"name" : "David Lee", "img" : '/director.jpg'}
     address = ('20 W 34th St.', 'New York', 'NY 10001', 'USA')
-    data = {"headeer" : header, "staff" : staff, "director" : director, "address" : address}
+    data = {"header" : header, "staff" : staff, "director" : director, "address" : address}
     return render(request, 'about.html', data)

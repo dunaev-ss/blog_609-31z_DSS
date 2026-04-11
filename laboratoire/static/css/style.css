@@ -1,4 +1,3 @@
-/* Базовый шрифт и центрирование */
 body {
     font-family: sans-serif;
     max-width: 600px;
@@ -7,31 +6,26 @@ body {
     padding: 0 20px;
 }
 
-/* Отступы между карточками в списке */
 .article__item {
     margin-bottom: 30px;
     padding-bottom: 20px;
     border-bottom: 1px solid #ddd;
 }
 
-/* Ссылка в заголовке */
 .article__item a {
     color: darkblue;
     text-decoration: none;
 }
 
-/* Дата серым цветом */
 time {
     color: gray;
     font-size: 0.9em;
 }
 
-/* Оформление текста статьи */
-.article-detail p {
+/* .article-detail p {
     font-size: 1.1em;
-}
+} */
 
-/* Стили для шапки */
 header {
     background: #333;
     color: white;
@@ -65,3 +59,13 @@ nav ul a {
     color: white;
     text-decoration: none;
 } 
+
+.nav-button {
+    background: none;
+    border: none;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+}
