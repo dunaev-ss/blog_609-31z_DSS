@@ -69,3 +69,18 @@ nav ul a {
     padding: 0;
     text-decoration: none;
 }
+
+.create-article {
+    margin: 20px 0;
+}
+
+.btn-create {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
