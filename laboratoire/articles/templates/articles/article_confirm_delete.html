@@ -1,13 +1,21 @@
 {% extends "base_layout.html" %}
 {% load static %}
-{% block title %}{{ article.title }}{% endblock title %}
+
+{% block title %}Delete: {{ article.title }}{% endblock title %}
+
 {% block content %}
-<div class="article-confirm-delete">
-    <h1 class="mb-3">Are you sure?</h1>
-    <form class="form" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Yes</button>
-        <a href="{% url 'homepage' %}" class="btn btn-secondary">Cancel</a>
-    </form>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="article-confirm-delete shadow-sm">
+            <h1 class="mb-4">Are you sure you want to delete <br><strong>"{{ article.title }}"</strong>?</h1>
+
+            <form method="post" class="d-flex justify-content-center gap-3">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger px-4">Yes, Delete</button>
+                <a href="{% url 'articles:article_detail' slug=article.slug %}"
+                    class="btn btn-secondary px-4">Cancel</a>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock content %}

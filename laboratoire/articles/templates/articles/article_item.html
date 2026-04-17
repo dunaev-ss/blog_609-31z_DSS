@@ -1,22 +1,28 @@
 {% extends "base_layout.html" %}
-{% block title %} {{ article.title }} {% endblock title %}
+
+{% block title %}{{ article.title }}{% endblock title %}
+
 {% block content %}
-    <div class="article-detail">
-        <img src="{{ article.thumbnail.url }}" alt="" width="600">
-        <h1> {{ article.title }} </h1>
-        <p> {{ article.body }} </p>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <img src="{{ article.thumbnail.url }}" alt="{{ article.title }}" class="img-fluid rounded shadow-sm mb-4">
+
+        <h1 class="display-5 mb-3">{{ article.title }}</h1>
+
+        <div class="lead mb-5" style="white-space: pre-line;">
+            {{ article.body }}
+        </div>
+
         {% if user.is_authenticated and user.id == article.author.id %}
-            <div>
-                <a class="btn btn-warning"
-                   href="{% url 'articles:update' slug=article.slug %}">
-                    Update
-                </a>
-                &nbsp;&nbsp;
-                <a class="btn btn-danger"
-                   href="{% url 'articles:delete' slug=article.slug %}">
-                    Delete
-                </a>
-            </div>
+        <div class="border-top pt-4 mt-5 d-flex gap-2">
+            <a class="btn btn-warning" href="{% url 'articles:update' slug=article.slug %}">
+                Edit Article
+            </a>
+            <a class="btn btn-danger" href="{% url 'articles:delete' slug=article.slug %}">
+                Delete
+            </a>
+        </div>
         {% endif %}
     </div>
+</div>
 {% endblock content %}

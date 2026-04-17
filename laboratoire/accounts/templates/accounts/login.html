@@ -1,14 +1,31 @@
 {% extends 'base_layout.html' %}
 {% load static %}
+
 {% block title %} Login {% endblock title %}
+
 {% block content %}
-  <h1>Login</h1>
-  <form class="form" action="{% url 'accounts:login' %}" method="post">
-    {% csrf_token %}
-    {{ form }}
-    {% if request.GET.next %}
-      <input type="hidden" name="next" value="{{ request.GET.next }}">
-    {% endif %}
-    <button type="submit">Login</button>
-  </form>
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-sm mt-5">
+      <div class="card-header bg-dark text-white">
+        <h4 class="mb-0 text-center">Login</h4>
+      </div>
+      <div class="card-body p-4">
+        <form class="form-container" action="{% url 'accounts:login' %}" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          {% if request.GET.next %}
+          <input type="hidden" name="next" value="{{ request.GET.next }}">
+          {% endif %}
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">Login</button>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer text-center text-muted small">
+        Don't have an account? <a href="{% url 'accounts:signup' %}" class="text-decoration-none">Sign up</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}

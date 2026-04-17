@@ -1,29 +1,36 @@
 {% extends "base_layout.html" %}
-{% block title %} Article List {% endblock title %}
+
+{% block title %}Article List{% endblock title %}
+
 {% block content %}
-<main>
+<div class="d-flex justify-content-between align-items-center mb-4">
     <h1>Article List</h1>
     {% if user.is_authenticated %}
-    <div class="create-article">
-        <a href="{% url 'articles:create' %}" class="btn-create">Create article</a>
-    </div>
+    <a href="{% url 'articles:create' %}" class="btn btn-success">Create article</a>
     {% endif %}
-    <div class="articles">
-        {% for element in articles %}
-        <div class="article__item">
-            <h2>
-                <a href="{% url 'articles:article_detail' slug=element.slug %}">
-                    {{ element.title }}
-                </a>
-            </h2>
-            <p>
-                {{ element.snippet }}
-            </p>
-            <time>
-                {{ element.date }}
-            </time>
+</div>
+
+<div class="row">
+    {% for element in articles %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h2 class="h5 card-title">
+                    <a href="{% url 'articles:article_detail' slug=element.slug %}" class="text-decoration-none">
+                        {{ element.title }}
+                    </a>
+                </h2>
+                <p class="card-text text-muted small">
+                    {{ element.snippet }}
+                </p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <time class="text-secondary font-monospace small">
+                    {{ element.date }}
+                </time>
+            </div>
         </div>
-        {% endfor %}
     </div>
-</main>
+    {% endfor %}
+</div>
 {% endblock content %}

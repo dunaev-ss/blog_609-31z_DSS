@@ -1,8 +1,10 @@
 {% extends "base_layout.html" %}
-{% block title %} Homepage {% endblock title %}
+
+{% block title %}Homepage{% endblock title %}
+
 {% block content %}
-<body>
+<div class="py-4">
     <h1>{{ header }}</h1>
     <p>{{ message }}</p>
-</body>
+</div>
 {% endblock content %}

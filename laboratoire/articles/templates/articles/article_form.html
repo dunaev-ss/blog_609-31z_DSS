@@ -1,11 +1,25 @@
 {% extends "base_layout.html" %}
 {% load static %}
+
 {% block title %}Create or update article{% endblock title %}
+
 {% block content %}
-<h1>Create or update article</h1>
-<form class="form" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Save</button>
-</form>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm mt-4">
+            <div class="card-header bg-dark text-white">
+                <h4 class="mb-0 text-center">Article Editor</h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="post" enctype="multipart/form-data" class="form-container">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Save Article</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
